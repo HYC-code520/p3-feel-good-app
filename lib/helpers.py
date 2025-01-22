@@ -1,5 +1,5 @@
 from .models.mood_model import log_mood_to_db, view_mood_history
-from .models.motivational_model import get_random_quote
+from .models.motivational_model import get_random_quote_by_category
 from .models.animal_story_model import get_random_animal_story
 
 # General feeling options
@@ -101,14 +101,44 @@ def view_moods():
 
         
 def get_quote():
-    """Retrieve and display a motivational quote."""
-    from .models.motivational_model import get_random_quote
+    """Prompt the user for a category and display a quote from that category."""
+  
+    # List of categories
+    CATEGORIES = [
+        "Calming",
+        "Empathetic",
+        "Encouraging",
+        "General",
+        "Gratitude-Inspired",
+        "Hopeful",
+        "Humorous",
+        "Motivational",
+        "Overcoming Challenges",
+        "Reflective",
+        "Self-Love",
+        "Uplifting"
+    ]
+    
     try:
-        quote = get_random_quote()
-        print("\nHere's something to brighten your day:")
+        # Step 1: Prompt the user for a category
+        print("\nWhat kind of inspiration do you need today? Choose from the list below to match your mood or boost your spirits!")
+        for i, category in enumerate(CATEGORIES, 1):
+            print(f"{i}. {category}")
+        
+        choice = input("Choose a number (1-12): ").strip()
+        while not choice.isdigit() or not (1 <= int(choice) <= len(CATEGORIES)):
+            print("Invalid choice. Please choose a valid number from the list.")
+            choice = input("Choose a number (1-12): ").strip()
+        
+        selected_category = CATEGORIES[int(choice) - 1]
+        
+        # Step 2: Retrieve a quote from the selected category
+        quote = get_random_quote_by_category(selected_category)
+        print(f"\nHere's a {selected_category.lower()} quote to brighten your day:")
         print(f"\"{quote}\"")
     except Exception as e:
         print(f"An error occurred while retrieving a quote: {e}")
+
 
 def get_animal_story():
     """Retrieve and display an inspiring animal story."""
