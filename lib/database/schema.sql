@@ -1,9 +1,10 @@
 CREATE TABLE IF NOT EXISTS mood_logs (
-    id INTEGER PRIMARY KEY,
-    date TEXT NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, -- Automatically adds the current date and time
     mood TEXT NOT NULL,
     notes TEXT
 );
+
 
 CREATE TABLE IF NOT EXISTS motivational_quotes (
     id INTEGER PRIMARY KEY,

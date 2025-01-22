@@ -9,7 +9,7 @@ def log_mood_to_db(mood, notes):
 
     # Use the absolute path to connect
     with sqlite3.connect(db_path) as con:
-        sql = "INSERT INTO mood_logs (date, mood, notes) VALUES (DATE('now'), ?, ?)"
+        sql = "INSERT INTO mood_logs (timestamp, mood, notes) VALUES (DATETIME('now'), ?, ?)"
         cursor = con.cursor()
         cursor.execute(sql, (mood, notes))
         con.commit()
@@ -18,7 +18,8 @@ def log_mood_to_db(mood, notes):
 def view_mood_history():
     db_path = "../database/mood_journal.db"
     with sqlite3.connect(db_path) as con:
-        sql = "SELECT date, mood, notes FROM mood_logs ORDER BY date DESC"
+        sql = "SELECT timestamp, mood, notes FROM mood_logs ORDER BY timestamp DESC"
         cursor = con.cursor()
         cursor.execute(sql)
         return cursor.fetchall()
+
