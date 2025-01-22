@@ -1,9 +1,11 @@
 CREATE TABLE IF NOT EXISTS mood_logs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, -- Automatically adds the current date and time
+    general_feeling TEXT, -- New column for general mood category
     mood TEXT NOT NULL,
     notes TEXT
 );
+
 
 
 CREATE TABLE IF NOT EXISTS motivational_quotes (

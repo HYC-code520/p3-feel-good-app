@@ -1,6 +1,7 @@
 from colorama import init, Fore, Style
 from .helpers import (
     log_mood,
+    view_moods,
     get_quote,
     get_animal_story
 )
@@ -89,7 +90,7 @@ def main():
         if choice == "1":
             log_mood()  # Log your mood
         elif choice == "2":
-            print(Fore.YELLOW + "View Mood History (Coming Soon!)")
+            view_moods()
         elif choice == "3":
             get_quote()  # Get a motivational quote
         elif choice == "4":
