@@ -51,7 +51,7 @@ def log_mood():
         general_feeling = GENERAL_FEELINGS[int(general_choice) - 1]
 
         # Step 2: Ask for detailed emotions
-        print("\nCan you tell me about it a little bit more? Choose from the following emotions:")
+        print("\nCan you tell me a little bit more? Choose from the following emotions:")
         for i, emotion in enumerate(DETAILED_EMOTIONS, 1):
             print(f"{i}. {emotion}")
         
@@ -63,14 +63,20 @@ def log_mood():
             if choice.isdigit() and 1 <= int(choice) <= len(DETAILED_EMOTIONS):
                 detailed_emotions.append(DETAILED_EMOTIONS[int(choice) - 1].split(" →")[0])
         
-        if not detailed_emotions:
-            print("You didn't select any detailed emotions. Logging the general feeling only.")
-        
-        # Step 3: Ask for additional notes
-        notes = input("Want to add any notes? (optional): ").strip()
-
         # Combine detailed emotions
-        mood_description = f"{', '.join(detailed_emotions)}"
+        mood_description = ", ".join(detailed_emotions) if detailed_emotions else "None provided"
+
+        # Step 3: Ask for additional notes
+        notes = input("Is there something on your mind or anything specific that’s making you feel this way? (optional): ").strip()
+
+        # Step 4: Ask for positive reflections
+        positive_reflection = input("Did something positive happen today that you’d like to celebrate or reflect on? (optional): ").strip()
+        
+        # Append the positive reflection to notes
+        if positive_reflection:
+            notes += f" | Positive Reflection: {positive_reflection}" if notes else f"Positive Reflection: {positive_reflection}"
+
+        # Log the mood into the database
         log_mood_to_db(general_feeling, mood_description, notes)
         print("Your mood has been logged!")
 
