@@ -45,9 +45,8 @@ start_app_ascii_art = Fore.CYAN + """
 ⢀⡾⠁⠀⠁⠀⠂⠀⠁⠀⠠⠀⣋⣿⢱⢊⡵⣿⣱⢊⢧⠀⠂⠈⠀⠄⠁⠠⠀⠂⠀⡰⡎⢣⢊⠕⣾⢻⠀⠀⠀⠠⠀⠂⠀⠀⠀⡿⣈⠳⣄⠫⡔⢣⠜⣡⢋⠴⣑⠻⣯⢾⣜⣣⠞
 ⡞⠀⢀⠀⠀⠀⠀⠂⠀⠀⠀⣀⡽⣸⠜⣢⢒⡹⣽⣮⢬⡃⠀⡠⢤⣀⠂⠀⠀⣠⠞⡱⠌⣅⢊⡼⡟⡾⠀⠀⠂⠀⠀⠀⠀⠀⢀⡷⢡⠓⡤⢓⡌⢣⠚⡤⢋⠲⣡⢃⢿⡄⠈⢳⣏⠀⠀⠀⠀⠀⠀⠀
 
-▒█░░▒█ █▀▀█ █░░█ █▀▀█ 　 ▒█▀▄▀█ █▀▀█ █▀▀█ █▀▀▄ 　 ▒█▀▀█ █░░█ █▀▀▄ █▀▀▄ █░░█ 
-▒█▄▄▄█ █░░█ █░░█ █▄▄▀ 　 ▒█▒█▒█ █░░█ █░░█ █░░█ 　 ▒█▀▀▄ █░░█ █░░█ █░░█ █▄▄█ 
-░░▒█░░ ▀▀▀▀ ░▀▀▀ ▀░▀▀ 　 ▒█░░▒█ ▀▀▀▀ ▀▀▀▀ ▀▀▀░ 　 ▒█▄▄█ ░▀▀▀ ▀▀▀░ ▀▀▀░ ▄▄▄█
+█▄█ █▀█ █░█ █▀█   █▀▄▀█ █▀█ █▀█ █▀▄   █▄▄ █░█ █▀▄ █▄█   █ █▀   █░█ █▀▀ █▀█ █▀▀
+░█░ █▄█ █▄█ █▀▄   █░▀░█ █▄█ █▄█ █▄▀   █▄█ █▄█ █▄▀ ░█░   █ ▄█   █▀█ ██▄ █▀▄ ██▄
 """+ Style.RESET_ALL
 
 exit_ascii_art = Fore.MAGENTA + """
@@ -76,11 +75,18 @@ exit_ascii_art = Fore.MAGENTA + """
    ██    ██   ██ ██   ██ ███████      ██████ ██   ██ ██   ██ ███████ 
 """ + Style.RESET_ALL
 
+from colorama import Fore, Style
+
+long_line_ascii_art = "\033[2m" + Fore.WHITE + """
+★・・・・・・・★・・・・・・・・★・・・・・・・★・・・・・・・★
+""" + Style.RESET_ALL
+
+
 def show_exit_art():
     """Display the exit ASCII art with color."""
     print(exit_ascii_art)
-    print(Fore.GREEN + "I hope I brought some cheer to your day. If not, that's okay—remember, brighter days are ahead. See you soon!")
-
+    print(Fore.GREEN + "I hope I brought some cheer to your day. If not, that's okay — remember, brighter days are ahead. See you soon!")
+    print(long_line_ascii_art)
 
 def main():
     print(start_app_ascii_art)  # Display starting ASCII art
@@ -101,14 +107,31 @@ def main():
         else:
             print(Fore.RED + "Invalid choice. Please try again.")
 
+heart_line_ascii_art = Fore.YELLOW + """
+꒰꒰・┄┄┄┄・♡・┄┄┄┄・꒱꒱
+""" + Style.RESET_ALL
+
+flower_line_ascii_art = Fore.MAGENTA + """
+⋆⁺₊⋆ ━━━━⊱❀ • ❀⊰━━━━ ⋆⁺₊⋆
+""" + Style.RESET_ALL
+
+pick_a_num_ascii_art = Fore.WHITE + """
+♡ Select A Number From Above ♡ : 
+
+""" + Style.RESET_ALL
+
 def menu():
     """Display the menu options with color."""
     print(Fore.YELLOW + "\nStep into the Mood & Motivation Journal – A place where feelings meet positivity!")
+    print(heart_line_ascii_art)
     print(Fore.WHITE + "1. Log Your Mood")
     print(Fore.WHITE + "2. View Mood History")
     print(Fore.WHITE + "3. Get a Boost of Positivity")
-    print(Fore.WHITE + "4. Learn an Inspiring Animal Story")
+    print(Fore.WHITE + "4. Animal Tales to Brighten Your Mood")
     print(Fore.BLUE + "0. Exit")
+    print(heart_line_ascii_art)
+    print(pick_a_num_ascii_art)
 
 if __name__ == "__main__":
     main()
+    

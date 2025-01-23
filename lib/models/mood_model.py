@@ -1,3 +1,4 @@
+from colorama import init, Fore, Style
 import sqlite3
 import os
 

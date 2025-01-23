@@ -6,7 +6,7 @@ def get_random_quote_by_category(category):
     # Calculate the database path
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     db_path = os.path.join(base_dir, "database", "mood_journal.db")
-    print("Attempting to connect to:", db_path)  # Debug path
+    # print("Attempting to connect to:", db_path)  # Debug path
 
     try:
         with sqlite3.connect(db_path) as con:
